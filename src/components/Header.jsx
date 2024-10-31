@@ -2,10 +2,9 @@ import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
 	const { pathname } = useLocation();
-	console.log(pathname);
 
 	return (
-		<header>
+		<header className={pathname === '/' ? 'main' : ''}>
 			<h1 className='logo'>
 				<Link to='/'>DCODELAB</Link>
 			</h1>
