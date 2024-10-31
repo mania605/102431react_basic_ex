@@ -1,36 +1,40 @@
-//import Layout from '../components/Layout';
-//레이아웃 지우고 visual, news, pics 만들기
-
-//윈도우 스크롤시 현재 스크롤되는 거리값을 Scroll상태값에 담아주는 함수 생성
-//해당 함수를 윈도우 스크롤이벤트 연결
-//컴포넌트 언마운트시 스크롤이벤트 해제
-//비주얼 컴포넌트에 스크롤값 전달
-//Visual안쪽에서 전달되는 Scroll값을 h2요소 원하는 스타일 구문에 연동
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import News from '../components/News';
 import Pics from '../components/Pics';
 import Visual from '../components/Visual';
 
 export default function Home() {
 	const [Scroll, setScroll] = useState(0);
+	const ref_wrap = useRef(null);
+	const ref_posArr = useRef([]);
 
 	const handleScroll = () => {
 		setScroll(window.scrollY);
 	};
 
+	const handleResize = () => {
+		ref_posArr.current = [];
+		for (const el of ref_wrap.current.children) {
+			ref_posArr.current.push(el.offsetTop);
+		}
+		console.log(ref_posArr.current);
+	};
 	useEffect(() => {
+		handleResize();
 		window.addEventListener('scroll', handleScroll);
+		window.addEventListener('resize', handleResize);
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
+			window.removeEventListener('resize', handleResize);
 		};
 	}, []);
 
 	return (
-		<>
+		<div ref={ref_wrap}>
 			<Visual Scroll={Scroll} />
-			<News />
+			<News Scroll={Scroll} pos={ref_posArr.current[1]} />
 			<Pics />
-		</>
+		</div>
 	);
 }

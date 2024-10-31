@@ -3,6 +3,7 @@ export default function Visual({ Scroll }) {
 		transform: `translateX(${Scroll}px) translateY(${Scroll}px) rotate(${Scroll * 1.5}deg) scale(${1 + Scroll / 400})`,
 		opacity: 1 - Scroll / 400
 	};
+
 	const style_box1 = {
 		transform: `rotateY(${Scroll}deg)`,
 		opacity: 1 - Scroll / 800
