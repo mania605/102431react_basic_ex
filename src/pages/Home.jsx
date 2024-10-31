@@ -33,8 +33,9 @@ export default function Home() {
 	return (
 		<div ref={ref_wrap}>
 			<Visual Scroll={Scroll} />
-			<News Scroll={Scroll} pos={ref_posArr.current[1]} />
+
 			<Pics />
+			<News Scroll={Scroll} pos={ref_posArr.current[2]} />
 		</div>
 	);
 }

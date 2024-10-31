@@ -1,4 +1,7 @@
 export default function Visual({ Scroll }) {
+	const style_frame = {
+		backgroundColor: `rgb(${Scroll >= 200 ? 200 : 170 + Scroll / 10}, ${210 - Scroll / 10}, ${230})`
+	};
 	const style_h2 = {
 		transform: `translateX(${Scroll}px) translateY(${Scroll}px) rotate(${Scroll * 1.5}deg) scale(${1 + Scroll / 400})`,
 		opacity: 1 - Scroll / 400
