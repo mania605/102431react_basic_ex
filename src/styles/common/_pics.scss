@@ -4,22 +4,27 @@
 	background: lightgreen;
 	position: relative;
 	overflow: hidden;
+
 	h2 {
 		font: bold 100px/1 'arial';
 		color: #333;
 		position: absolute;
-		top: 10vh;
+		top: 15vh;
 		left: 5vw;
 	}
+
 	.inner {
-		width: 300px;
+		width: 100%;
 		height: 100vh;
 		position: relative;
+
 		ul {
 			width: 3000px;
 			height: 100%;
 			display: flex;
 			align-items: center;
+			margin-top: 150px;
+
 			li {
 				width: 260px;
 				height: 400px;
